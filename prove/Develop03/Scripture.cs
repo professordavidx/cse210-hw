@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-// This class will keep track of the refrence and the text of the scripture. Can hide words and get the rendered display of the text
+// This class will keep track of the reference and the text of the scripture. Can hide words and get the rendered display of the text
 public class Scripture
 {
     private string _reference;
