@@ -25,11 +25,15 @@ public class Reference
 
     public string multipleVerse()
     {
-        return $"{_book} {_chapter}:{_verse} - {_endVerse}";
+        string scriptureReference = $"{_book} {_chapter}:{_verse}-{_endVerse}";
+
+        return scriptureReference;
     }
 
     public string singleVerse()
     {
-        return $"{_book} {_chapter}:{_verse}";
+        string scriptureReference = $"{_book} {_chapter}:{_verse}";
+
+        return scriptureReference;
     }
 }
