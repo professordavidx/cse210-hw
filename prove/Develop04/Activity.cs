@@ -4,6 +4,9 @@ public class Activity
     private string _description;
     protected int _duration;
 
+    protected DateTime _time;
+    
+
     public Activity(string name, string description)
     {
         _name = name;
@@ -23,7 +26,7 @@ public class Activity
     public void DisplayStartingMessage()
     {
         Console.Clear();
-        Console.WriteLine($"Welcome to {_name}");
+        Console.WriteLine($"Welcome to {_name}. \n");
         Console.WriteLine($"{_description}\n");
 
     }
@@ -46,9 +49,10 @@ public class Activity
         while (DateTime.Now < endTime)
         {
             string s = animation[i];
-            Console.WriteLine(s);
+            Console.Write(s);
             Thread.Sleep(1000);
             Console.Write("\b \b");
+
             i++;
         }
         Console.WriteLine("");
@@ -58,19 +62,20 @@ public class Activity
     {
         Console.WriteLine("Well done!!");
         ShowSpinner();
-        Console.WriteLine($"You have completed {_duration} seconds of the {_name}" );
+        Console.WriteLine($"You have completed {_duration} seconds of the {_name}");
         ShowSpinner();
         Console.Clear();
     }
 
     public void CountDown(int num = 0)
     {
-        for (int i = num; i>0; i--)
+        for (int i = num; i > 0; i--)
         {
             Console.Write(i);
             Thread.Sleep(1000);
             Console.Write("\b \b");
         }
+        Console.WriteLine("");
     }
 
     public void GetReady()
@@ -86,10 +91,23 @@ public class Activity
         CountDown(5);
     }
 
-    public void 
+    public void StartMessage()
+    {
+        DisplayStartingMessage();
+        Console.Write("How long, in seconds would you like for your session? ");
+        _duration = Convert.ToInt32(Console.ReadLine());
+        GetReady();
+    }
 
-
-
-
+    public DateTime DurationInSeconds()
+    {
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(_duration);
+        _time = endTime;
+        return _time;
+    }
 }
+
+    
+
 
