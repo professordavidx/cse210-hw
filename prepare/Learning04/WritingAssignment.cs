@@ -2,8 +2,7 @@ public class WritingAssignment : Assignment
 {
     string _tittle = "";
 
-    public WritingAssignment(string studentName, string topic, string title)
-        : base(studentName, topic)
+    public WritingAssignment(string studentName, string topic, string title) : base(studentName, topic)
     {
         _tittle = title;
     }
