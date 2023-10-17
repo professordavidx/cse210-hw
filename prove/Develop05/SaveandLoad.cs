@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Develop05
 {
-    public class SaveandLoad
+    public class SaveAndLoad
     {
         private List<Goal> _goalList = new List<Goal>();
         private List<string> _goalListString = new List<string>();
