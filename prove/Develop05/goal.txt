@@ -1,0 +1,5 @@
+805
+SimpleGoal:,play basketball today,at church,50,True
+EternalGoal:,wake up early,at least at 4:55 am,25
+ChecklistGoal:,go to the temple,perform any ordinance,10,250,3,0
+ChecklistGoal:,stop using the cell on each meal,stop using the phone for more than 45 minutes,15,350,5,5

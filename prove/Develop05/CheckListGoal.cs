@@ -9,73 +9,69 @@ namespace Develop05
 {
     public class CheckListGoal : Goal
     {
-        protected int _amountCompleted;
-        protected int _target;
-        protected int _bonus;
+        private int _completed;
+        public int _bonus;
+        private int _target;
 
-        public CheckListGoal(string name, string description , string points , int target , int bonus) : base (name,description,points)
+        public void SetBonus()
         {
-            _target = target;
+            Console.Write("How many times does this goal need to be accomplished for a bonus? ");
+            _target = Convert.ToInt32(Console.ReadLine());
+            Console.Write("What is the bonus for accomplishing it that many times? ");
+            _bonus = Convert.ToInt32(Console.ReadLine());
+        }
+        // This Get and Set methods will be used in other functions where the user don't see that working
+        public void SetBonus(int bonus)
+        {
             _bonus = bonus;
         }
-
-        public int GetAmountCompleted()
-        {
-            return _amountCompleted;
-        }
-
-        public void SetAmountCompleted(int amountCompleted)
-        {
-            _amountCompleted = amountCompleted;
-        }
-
-        public int GetTarget()
-        {
-            return _target;
-        }
-
-        public void SetTarget( int target)
-        {
-            _target = target;
-        }
-
         public int GetBonus()
         {
             return _bonus;
         }
-
-        public void SetBonus( int bonus)
+        public void SetTargets(int target)
         {
-            _bonus = bonus;
+            _target = target;
         }
-
-        public override void RecordEvent()
+        public int GetTargets()
         {
-            
+            return _target;
         }
-
-        public override bool IsComplete()
+        public void Setcompleted(int completed)
         {
-            return true; // I set it up as true in the meantime
+            _completed = completed;
         }
-
-        public override string GetDetailString()
+        public int Getcompleted(int completed)
         {
-            return  
+            return _completed;
         }
-
+        // here is where the polymorphism works, check if is different in other class. Just check the override methods
+        public override string CreateGoal()
+        {
+            return $"{GetGoal()},{GetDescription()},{GetPoints()},{_bonus},{_target},{_completed}";
+        }
         public override string GetStringRepresentation()
         {
-            return
+            return $"{GetGoal()} ({GetDescription()}) -- currently completed: {_completed}/{_target}";
         }
-
-        
-
-
-
-
-
-
-
+        public override int RecordEvent()
+        {
+            _completed++;
+            int totalPoints = 0;
+            if (_completed == _target)
+            {
+                SetCheck(true);
+                totalPoints = GetPoints() + _bonus;
+            }
+            else if (GetCheck() == true)
+            {
+                Console.WriteLine("Goal already completed! Create another one.\n");
+            }
+            else
+            {
+                totalPoints = GetPoints();
+            }
+            return totalPoints;
+        }
     }
 }

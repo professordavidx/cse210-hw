@@ -1,65 +1,68 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Develop05
 {
-    public  abstract class Goal // Super Class
+    public abstract class Goal
     {
-        protected string _shortName;
-        protected string _description;
-        protected string _points;
-
-        public Goal(string shortname, string description, string points) // constructor
+        protected int _score;
+        private string _description;
+        private int _points;
+        private string _goal;
+        protected bool _isCheck;
+        public void SetGoals()
         {
-            _shortName = shortname;
-            _description = description;
-            _points = points;
+            Console.Write("what is the name of your goal? ");
+            _goal = Console.ReadLine();
+            Console.Write("What is a short description of it? ");
+            _description = Console.ReadLine();
+            Console.Write("What is the amount of points associated with this goal? ");
+            _points = Convert.ToInt32(Console.ReadLine());
         }
-
-        //creating getters and setters for the properties
-
-        public string GetShortName()
+        public string GetGoal()
         {
-            return _shortName;
+            return _goal;
         }
-
-        public void SetShortName( string shortname)
+        public void SetGoal(string goal)
         {
-            _shortName = shortname;
+            _goal = goal;
         }
-
         public string GetDescription()
         {
             return _description;
         }
-
-        public void SetDescription( string description)
+        public void SetDescription(string description)
         {
             _description = description;
         }
-
-        public string GetPoints()
+        public int GetPoints()
         {
             return _points;
         }
-
-        public void SetPoints( string points)
+        public void SetPoints(int points)
         {
             _points = points;
         }
-
-        // Methods to be overridden in other classes Subclasses
-        public abstract void RecordEvent();
-        public abstract bool IsComplete();
-        public abstract string GetDetailString();
-        public abstract  string GetStringRepresentation();
-
-       
-
-
+        public void SetScore(int score)
+        {
+            _score += score;
+        }
+        public int GetScore()
+        {
+            return _score;
+        }
+        public void SetCheck(bool isCheck)
+        {
+            _isCheck = isCheck;
+        }
+        public bool GetCheck()
+        {
+            return _isCheck;
+        }
+        public abstract string CreateGoal();
+        public abstract int RecordEvent();
+        public abstract string GetStringRepresentation();
     }
-
 }
